@@ -13,6 +13,7 @@ import Guestlayout from './components/Guestlayout'
 import Dashboard from './views/Dashboard'
 
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+import { ContextProvider } from './context/contextProvider';
 
 
 const router = createBrowserRouter([
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Navigate to="/users" />
-    },
+      },
       {
         path: '/users',
         element: <Users />
@@ -56,5 +57,7 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <React.StrictMode>
+      <RouterProvider router={router} />
+  </React.StrictMode>
 )

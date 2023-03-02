@@ -1,9 +1,11 @@
+import React from 'react';
 import { createContext, useState, useContext } from 'react';
+
 const stateContext = createContext({
     user: null,
     token: null,
-    setUser: () => { },
-    setToken: () => { }
+    setUser: () => {},
+    setToken: () => {}
 });
 
 
@@ -11,12 +13,20 @@ const stateContext = createContext({
 // Path: react/src/context/contextProvider.js
 
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState({
+        name: "John Doe",
+    });
     const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
 
     const setToken = (token) => {
         _setToken(token)
-        token? localStorage.setItem('ACCESS_TOKEN', token) : localStorage.removeItem("ACCES_TOKEN")
+        // token? localStorage.setItem('ACCESS_TOKEN', token) : localStorage.removeItem("ACCES_TOKEN")
+        if (token) {
+            localStorage.setItem("ACCESS_TOKEN", token)
+        }
+        else {
+            localStorage.removeItem("ACCES_TOKEN")
+        }
     }
     return (
         <stateContext.Provider value={{ user, token, setUser, setToken }}>
@@ -27,6 +37,6 @@ export const ContextProvider = ({ children }) => {
 
 
 // Path: react/src/context/contextProvider.js
-export const useGlobalContext = () => {
+export const useStateContext = () => {
     return useContext(stateContext)
 }
