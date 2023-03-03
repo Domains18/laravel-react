@@ -1,14 +1,19 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState} from "react";
+import React from "react";
 const StateContext = React.createContext({
     currentUser: null,
     token: null,
+    setCurrentUser: () => { },
+    setToken: () => { },
 }); 
 
 
 // Path: react/src/context/contextProvider.js
 
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState({});
+    const [currentUser, setUser] = useState({
+        name: "John Doe",
+    });
     const [token, _setToken] = useState(localStorage.getItem("AccessToken"));
 
     const setToken = (token) => {
@@ -22,7 +27,7 @@ export const ContextProvider = ({ children }) => {
         }
     }
     return (
-        <StateContext.Provider value={{ user, setUser, token, setToken }}>
+        <StateContext.Provider value={{ currentUser, setUser, token, setToken }}>
             {children}
         </StateContext.Provider>
     )

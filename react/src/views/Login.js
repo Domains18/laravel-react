@@ -9,17 +9,20 @@ const Login = () => {
   return (
     <div className='login-signup-form animated fadeInDown'>
       <div className="form">
-        <form action="" onSubmit={handleSubmit}>
+        <h1 className="title">
+          Login to your account
+        </h1>
+        <form onSubmit={handleSubmit}>
           <input type="text" placeholder='Email' />
-          <input type="password" placeholder='password' />
-          <button className='btn btn-block'>Submit</button>
+          <input type="password" placeholder='Password' />
+          <button className='btn btn-block'>Login</button>
         </form>
       </div>
       <p className="message">
         Not registered? <Link to="/login">Create an account</Link>
       </p>
     </div>
-  )
+  ) 
 }
 
 export default Login
