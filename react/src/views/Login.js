@@ -7,6 +7,7 @@ const Login = () => {
     console.log('submit')
   }
   return (
+    <>
     <div className='login-signup-form animated fadeInDown'>
       <div className="form">
         <h1 className="title">
@@ -17,11 +18,12 @@ const Login = () => {
           <input type="password" placeholder='Password' />
           <button className='btn btn-block'>Login</button>
         </form>
-      </div>
-      <p className="message">
-        Not registered? <Link to="/login">Create an account</Link>
+        <p className="message">
+        Not registered? <Link to="/signup">Create an account</Link>
       </p>
-    </div>
+      </div>
+      </div>
+    </>
   ) 
 }
 
