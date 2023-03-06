@@ -36,7 +36,6 @@ class AuthController extends Controller
         $user = Auth::user();
         $token = $user->createToken('main')->plainTextToken;
         return response(compact('user', 'token'));
-
     }
     public function logout(Request $request)
     {
