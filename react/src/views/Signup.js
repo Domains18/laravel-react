@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import axiosClient from '../axios';
-import useStateContext from "../context/contextProvider"
+import { useStateContext } from "../context/contextProvider";
+
+
+
 const Signup = () => {
   const nameRef = React.useRef()
   const emailRef = React.useRef()
