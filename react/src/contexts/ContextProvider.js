@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, useState, useContext } from "react";
 
 const StateContext = createContext({
@@ -9,12 +10,15 @@ const StateContext = createContext({
 
 
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [token, _setToken] = useState(null);
+    const [user, setUser] = useState({
+        name: 'John Doe'
+    });
+    const [token, _setToken] = useState();
     const setToken = (token) => {
         _setToken(token);
         if (token) {
             localStorage.setItem('ACCES_TOKEN', token);
+    
         } else {
             localStorage.removeItem('ACCES_TOKEN');
         }
@@ -30,4 +34,6 @@ export const ContextProvider = ({ children }) => {
         </StateContext.Provider>
     )
 }
-export const useStateValue = () => useContext(StateContext);
+export const useStateContext = () => useContext(StateContext);
+
+// Path: react/src/components/DefaultLayout.js
