@@ -6,13 +6,17 @@ import Users from './views/Users';
 import NotFound from './views/NotFound';
 import DefaultLayout from './components/DefaultLayout';
 import GuestLayout from './components/GuestLayout';
+import Dashboard from './views/Dashboard';
+import { Navigate } from 'react-router-dom';
+
 
 const router = createBrowserRouter([
     {
         path: '/', element: <DefaultLayout />,
         children: [
+            { path: '/', element: <Navigate to='/users' /> },
             { path: '/users', element: <Users /> },
-            {path: 'dashboard', }
+            { path: 'dashboard', element: <Dashboard /> }
 
         ]
     },
